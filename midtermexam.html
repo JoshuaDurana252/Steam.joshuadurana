@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Steam GTA V Store</title>
+  <style>
+    body {
+      background-color: #1b2838;
+      font-family: Arial, sans-serif;
+      color: #c7d5e0;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+    .game-header {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .game-image {
+      width: 300px;
+      height: auto;
+      border: 2px solid #66c0f4;
+    }
+    .game-info {
+      flex: 1;
+    }
+    .game-title {
+      font-size: 32px;
+      margin-bottom: 10px;
+      color: #66c0f4;
+    }
+    .menu {
+      margin: 20px 0;
+    }
+    .menu button {
+      background-color: #2a475e;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    .menu button:hover {
+      background-color: #66c0f4;
+    }
+    .description, .reviews, .requirements {
+      display: none;
+      margin-top: 15px;
+    }
+    .visible {
+      display: block;
+    }
+    .actions {
+      margin-top: 20px;
+    }
+    .actions button {
+      background-color: #5c7e10;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    input[type="file"] {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="game-header">
+    <div>
+      <img id="gameImg" class="game-image" src="https://cdn.akamai.steamstatic.com/steam/apps/271590/header.jpg" alt="GTA V">
+      <input type="file" accept="image/*" onchange="loadImage(event)">
+    </div>
+    <div class="game-info">
+      <div class="game-title">Grand Theft Auto V</div>
+      <div class="actions">
+        <button onclick="alert('Purchased!')">Buy Now - $29.99</button>
+        <button onclick="alert('Added to wishlist!')">Add to Wishlist</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu">
+    <button onclick="showSection('description')">Description</button>
+    <button onclick="showSection('reviews')">Reviews</button>
+    <button onclick="showSection('requirements')">System Requirements</button>
+  </div>
+
+  <div id="description" class="description visible">
+    <p>GTA V is an open-world action-adventure game developed by Rockstar Games, set in the city of Los Santos and its surrounding areas.</p>
+  </div>
+  <div id="reviews" class="reviews">
+    <p>Overwhelmingly Positive! One of the best-selling games of all time with rave reviews.</p>
+  </div>
+  <div id="requirements" class="requirements">
+    <ul>
+      <li>OS: Windows 10</li>
+      <li>Processor: Intel Core i5</li>
+      <li>Memory: 8 GB RAM</li>
+      <li>Graphics: NVIDIA GTX 660</li>
+      <li>Storage: 72 GB available space</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  function showSection(section) {
+    document.querySelectorAll('.description, .reviews, .requirements').forEach(el => {
+      el.classList.remove('visible');
+    });
+    document.getElementById(section).classList.add('visible');
+  }
+
+  const loadImage = event => {
+    const image = document.getElementById('gameImg');
+    image.src = URL.createObjectURL(event.target.files[0]);
+  }
+</script>
+
+</body>
+</html>
